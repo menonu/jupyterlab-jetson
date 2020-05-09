@@ -1,12 +1,21 @@
 version: "3"
 
 services:
-  base:
+  jupyter:
     build: ./base
     volumes:
       - notebookdata:/data
     ports:
       - "8000:8000"
+
+  nginx:
+    image: arm64v8/nginx
+    volumes:
+      - ./volumes/nginx/conf.d:/etc/nginx/conf.d
+      - ./volumes/letsencrypt/config/etc/letsencrypt/:/etc/letsencrypt
+    ports:
+      - "443:443"
+      - "80:80"
 
 volumes:
   notebookdata:

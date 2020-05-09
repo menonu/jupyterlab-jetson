@@ -13,4 +13,4 @@ RUN pip3 install jupyterlab
 RUN useradd -m -s /bin/bash -N -u 1000 docker
 USER docker
 
-CMD [ "jupyter", "lab", "--port=8000", "--ip=*", "--notebook-dir=/data", "--no-browser"]
+CMD [ "jupyter", "lab", "--port=8000", "--ip=*", "--notebook-dir=/data", "--no-browser", "--NotebookApp.base_url=/jupyter"]
